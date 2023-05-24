@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "OrderService\OrderService.csproj", "{6BFEAA8D-C3A1-4228-B8E0-61CF0783E1CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryService", "InventoryService\InventoryService.csproj", "{325E255E-620E-4C3F-AA23-0A92D617ED77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaprBlocks", "DaprBlocks\DaprBlocks.csproj", "{FB8938B4-60C4-41E2-BDED-BB1F2D50246E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6769BB55-3DCB-4BF9-AEFC-8AA9A952D770}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{877C27A0-97AA-4ED5-93B5-78DE3235C5DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{6F6CDE31-E2D9-4CA2-8962-B164B911F6F1}"
+	ProjectSection(SolutionItems) = preProject
+		dapr\components\rabbitmq-pubsub.yaml = dapr\components\rabbitmq-pubsub.yaml
+		dapr\components\redis-pubsub.yaml = dapr\components\redis-pubsub.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{00013FD8-7447-4042-860F-19D659862E46}"
+	ProjectSection(SolutionItems) = preProject
+		dapr\config\config.yaml = dapr\config\config.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BFEAA8D-C3A1-4228-B8E0-61CF0783E1CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BFEAA8D-C3A1-4228-B8E0-61CF0783E1CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BFEAA8D-C3A1-4228-B8E0-61CF0783E1CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BFEAA8D-C3A1-4228-B8E0-61CF0783E1CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{325E255E-620E-4C3F-AA23-0A92D617ED77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325E255E-620E-4C3F-AA23-0A92D617ED77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325E255E-620E-4C3F-AA23-0A92D617ED77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325E255E-620E-4C3F-AA23-0A92D617ED77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB8938B4-60C4-41E2-BDED-BB1F2D50246E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8938B4-60C4-41E2-BDED-BB1F2D50246E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8938B4-60C4-41E2-BDED-BB1F2D50246E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8938B4-60C4-41E2-BDED-BB1F2D50246E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6769BB55-3DCB-4BF9-AEFC-8AA9A952D770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6769BB55-3DCB-4BF9-AEFC-8AA9A952D770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6769BB55-3DCB-4BF9-AEFC-8AA9A952D770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6769BB55-3DCB-4BF9-AEFC-8AA9A952D770}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6F6CDE31-E2D9-4CA2-8962-B164B911F6F1} = {877C27A0-97AA-4ED5-93B5-78DE3235C5DC}
+		{00013FD8-7447-4042-860F-19D659862E46} = {877C27A0-97AA-4ED5-93B5-78DE3235C5DC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6722194-4FBD-4E2E-8966-65C80FF3060E}
+	EndGlobalSection
+EndGlobal
