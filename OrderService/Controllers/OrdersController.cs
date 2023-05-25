@@ -43,7 +43,7 @@ namespace Orders.Controllers
 
             if (inventoryUpdated)
             {
-                return Ok(order);
+                return Ok("Order Placed");
             }
             else
             {

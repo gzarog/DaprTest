@@ -1,5 +1,15 @@
 version: '3.9'
 services:
+  order-app:
+    build:
+      context: ./order-app/
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - orderservice
+  
+      
   orderservice:
     build:
       context: .
