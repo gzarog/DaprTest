@@ -23,7 +23,7 @@ namespace Inventory.Controllers
         [HttpPost("UpdateInventory")]
         public async Task<IActionResult> UpdateInventory([FromBody] Order order, [FromServices] DaprClient daprClient)
         {
-            var inventoryUpdated = _inventoryRepository.UpdateInventory(order);
+            var inventoryUpdated = await _inventoryRepository.UpdateStateInventory(order);
             return Ok(inventoryUpdated);
         }
         
@@ -31,7 +31,7 @@ namespace Inventory.Controllers
         [HttpGet("{itemName}")]
         public async Task<IActionResult> GetInventory(string itemName)
         {
-            var inventory = _inventoryRepository.GetInventory(itemName);
+            var inventory = await _inventoryRepository.GetInventoryItemFromState(itemName);
             if (inventory == null)
             {
                 return NotFound();

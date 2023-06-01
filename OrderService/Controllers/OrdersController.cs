@@ -26,13 +26,16 @@ namespace Orders.Controllers
             try
             {
                 order.Source = "http";
-                inventoryUpdated = await _daprClient.InvokeMethodAsync<Order, bool>(HttpMethod.Post, "inventoryservice", "UpdateInventory", order).ConfigureAwait(false);
-
+                inventoryUpdated = await _daprClient.InvokeMethodAsync<Order, bool>(HttpMethod.Post, "inventoryservice", "UpdateInventory", order);
+                
                 order.Source = "redis";
-                await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order).ConfigureAwait(false);
+                await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order).ConfigureAwait(true);
+                //var result = Task.Run(async () => await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order));
+
 
                 order.Source = "rabbit";
-                await _daprClient.PublishEventAsync("rabbitmq-pubsub", "updateinventory", order).ConfigureAwait(false);
+                await _daprClient.PublishEventAsync("rabbitmq-pubsub", "updateinventory", order).ConfigureAwait(true);
+                //var result2 = Task.Run(async () => await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order));
             }
             catch (Exception ex)
             {

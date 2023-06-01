@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 	ProjectSection(SolutionItems) = preProject
 		dapr\components\rabbitmq-pubsub.yaml = dapr\components\rabbitmq-pubsub.yaml
 		dapr\components\redis-pubsub.yaml = dapr\components\redis-pubsub.yaml
+		dapr\components\stateStore.yaml = dapr\components\stateStore.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{00013FD8-7447-4042-860F-19D659862E46}"

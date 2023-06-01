@@ -10,7 +10,7 @@ builder.Services.AddControllers().AddDapr();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IInventoryRepository, InMemoryInventoryRepository>();
+builder.Services.AddSingleton<IInventoryRepository, StateInventoryRepository>();
 
 var app = builder.Build();
 
