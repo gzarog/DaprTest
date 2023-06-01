@@ -9,7 +9,12 @@ spec:
     enabled: true
     exporterType: zipkin
     samplingRate: "1"
+    stdout: true
     expandParams: true
     includeBody: true
     zipkin:
         endpointAddress: "http://zipkin_service:9411/api/v2/spans"
+  logging:
+    apiLogging:
+        enabled: true
+    

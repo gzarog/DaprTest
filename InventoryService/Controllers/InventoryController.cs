@@ -27,7 +27,6 @@ namespace Inventory.Controllers
             return Ok(inventoryUpdated);
         }
         
-        // Optionally, you could add a method to get inventory data for testing
         [HttpGet("{itemName}")]
         public async Task<IActionResult> GetInventory(string itemName)
         {
@@ -38,5 +37,6 @@ namespace Inventory.Controllers
             }
             return Ok(inventory);
         }
+
     }
 }

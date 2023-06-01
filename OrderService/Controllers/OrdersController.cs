@@ -25,17 +25,25 @@ namespace Orders.Controllers
             // and the application id of the InventoryService is "inventoryservice"
             try
             {
-                order.Source = "http";
-                inventoryUpdated = await _daprClient.InvokeMethodAsync<Order, bool>(HttpMethod.Post, "inventoryservice", "UpdateInventory", order);
                 
-                order.Source = "redis";
-                await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order).ConfigureAwait(true);
-                //var result = Task.Run(async () => await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order));
+                if (order.Method.Equals("http") ) 
+                {
+                    
+                    inventoryUpdated = await _daprClient.InvokeMethodAsync<Order, bool>(HttpMethod.Post, "inventoryservice", "UpdateInventory", order);
+                }
+
+                if (order.Method.Equals("redis"))
+                {
+                    await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order).ConfigureAwait(true);
+                    inventoryUpdated = true;
+                }
 
 
-                order.Source = "rabbit";
-                await _daprClient.PublishEventAsync("rabbitmq-pubsub", "updateinventory", order).ConfigureAwait(true);
-                //var result2 = Task.Run(async () => await _daprClient.PublishEventAsync("redis-pubsub", "updateinventory", order));
+                if (order.Method.Equals("rabbit"))
+                {
+                    await _daprClient.PublishEventAsync("rabbitmq-pubsub", "updateinventory", order).ConfigureAwait(true);
+                    inventoryUpdated = true;
+                }
             }
             catch (Exception ex)
             {

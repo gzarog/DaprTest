@@ -26,10 +26,13 @@ app.UseCloudEvents();
 
 app.UseAuthorization();
 app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-    endpoints.MapSubscribeHandler();
-}
+    {
+        endpoints.MapControllers();
+        endpoints.MapSubscribeHandler();
+    }
 );
+
+var inventory = app.Services.GetService<IInventoryRepository>();
+inventory.InitDataToState();
 
 app.Run();

@@ -6,7 +6,7 @@ const OrderForm = () => {
         Id: '',
         ItemName: '',
         Quantity: '',
-        Source: '',
+        Method: 'http',
     });
 
     const handleChange = (e) => {
@@ -43,7 +43,7 @@ const OrderForm = () => {
                 </label>
                 <label>
                     Source:
-                    <input type="text" name="Source" value={order.Source} onChange={handleChange} />
+                    <input type="text" name="Method" value={order.Method} onChange={handleChange} />
                 </label>
                 <button type="submit">Submit Order</button>
             </form>
