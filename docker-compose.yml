@@ -102,5 +102,20 @@ services:
     networks:
       - dapr-network
 
+  seq:
+    image: datalust/seq:latest
+    container_name: "seq_service"
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - seqdata:/data
+    ports:
+      - "5341:80"
+    networks:
+      - dapr-network
+volumes:
+   seqdata:
+
+
 networks:
     dapr-network:

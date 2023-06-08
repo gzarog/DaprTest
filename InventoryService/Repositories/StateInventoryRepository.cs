@@ -25,7 +25,7 @@ namespace InventoryService.Repositories
         public async Task InitDataToState()
         {
             // Initialize with some dummy state  data
-            _log.LogTrace("Init State Data");
+            _log.LogInformation("Init State Data");
             await _daprClient.SaveStateAsync(stateStoreName, "Item1", new InventoryModel { ItemName = "Item1", Quantity = 100 });
             await _daprClient.SaveStateAsync(stateStoreName, "Item2", new InventoryModel { ItemName = "Item2", Quantity = 200 });
             
@@ -49,12 +49,12 @@ namespace InventoryService.Repositories
                     inventoryItem.Quantity -= order.Quantity;
 
                     await _daprClient.SaveStateAsync(stateStoreName, inventoryItem.ItemName, inventoryItem);
-                    _log.LogTrace("Update State Inventory Success");
+                    _log.LogInformation("Update State Inventory Success");
                     return true;
                 }
 
             }
-            _log.LogTrace("Update State Inventory Fail");
+            _log.LogInformation("Update State Inventory Fail");
             return false;
         }
 

@@ -1,5 +1,8 @@
 using InventoryService.Interfaces;
 using InventoryService.Repositories;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,28 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IInventoryRepository, StateInventoryRepository>();
+
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.Seq("http://seq_service:5341") 
+    .Enrich.FromLogContext()
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+builder.Services.AddOpenTelemetryTracing(builder =>
+{
+    builder
+    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("InventoryService"))
+    .AddAspNetCoreInstrumentation()
+    .AddHttpClientInstrumentation()
+    
+    .AddZipkinExporter(o =>
+        {
+            o.Endpoint = new Uri("http://zipkin_service:9411/api/v2/spans");
+        });
+});
 
 var app = builder.Build();
 

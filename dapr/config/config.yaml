@@ -17,4 +17,6 @@ spec:
   logging:
     apiLogging:
         enabled: true
+  metric:
+   enabled: true
     
